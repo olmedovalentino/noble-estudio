@@ -1,17 +1,53 @@
 @import "tailwindcss";
 
+@theme {
+  --font-serif: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-sans), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  
+  --color-surface: #FFFFFF;
+  --color-warm-bg: #FBFBFA;
+  --color-warm-card: #F5F4F0;
+  --color-border-subtle: #E8E5DF;
+  --color-border-dark: #2A2826;
+  --color-text-muted: #7E7A73;
+  --color-graphite: #2A2826;
+  --color-charcoal: #141413;
+}
+
 :root {
-  --background: #fafafa;
-  --foreground: #18181b;
-  --surface: #ffffff;
-  --border: #e4e4e7;
-  --muted: #71717a;
+  --background: #FBFBFA;
+  --foreground: #141413;
 }
 
 body {
+  font-family: var(--font-sans);
   background-color: var(--background);
   color: var(--foreground);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Micro-animaciones sutiles editoriales */
+@keyframes subtle-fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: subtle-fade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

@@ -163,22 +163,26 @@ export interface Product {
   - Creados helpers directos de WhatsApp para productos y consultas generales en `src/lib/utils.ts`.
   - Validaciones de TypeScript (`tsc --noEmit`), ESLint y producción (`next build`) verificadas al 100%.
 
-- **Etapa 3: Componentes Globales de Layout**
-  - `Header` responsive con navegación clara (Inicio, Catálogo, Contacto).
-  - `Footer` con información comercial, horarios, links y aviso de datos demostrativos.
-  - `WhatsAppButton` flotante y reutilizable.
+- **Etapa 3: Componentes Globales de Layout** *(COMPLETADA)*
+  - `Header` minimalista con detección de scroll (fondo traslúcido y desenfoque sutil), menú mobile de pantalla completa y enlace discreto de atención.
+  - `Footer` amplio y editorial con información del atelier, showroom, horarios, categorías y redes.
+  - `WhatsAppButton` flotante rediseñado como píldora sobria de lujo (en grafito/negro mate, con indicador sutil y sin estridencias).
+  - Primitiva `SectionTitle` con etiqueta de autor (`01 / MANIFIESTO`), tipografía serif refinada y descripción fluida.
 
-- **Etapa 4: Home Page**
-  - Hero visual de alto impacto con llamada a la acción hacia `/productos`.
-  - Grid de categorías visuales (`CategoryCard`).
-  - Sección de "Productos Destacados" (`ProductGrid`).
-  - Sección de propuesta de valor / taller / calidad ("Sobre nosotros").
-  - Banner CTA para consultas a medida por WhatsApp.
+- **Etapa 4: Home Page Editorial** *(COMPLETADA)*
+  - Hero a pantalla completa (`Hero.tsx`) con atmósfera visual, mínima intervención textual y CTA discreto.
+  - Bloque editorial (`EditorialIntro.tsx`) sobre materialidad, arquitectura y respeto por el espacio.
+  - Grilla asimétrica de categorías (`CategoryBespokeGrid.tsx`) que rompe la cuadrícula genérica.
+  - Sección de "Piezas Destacadas" con `ProductGrid` y tarjetas editoriales `ProductCard`.
+  - Bloque de taller (`CraftsmanshipSection.tsx`) enfocado en ebanistería, maderas seleccionadas y proyectos a medida.
+  - Quiebre inmersivo (`AtmosphereBreak.tsx`) en tono grafito con ambientación arquitectónica.
+  - Llamado final (`ConsultationCTA.tsx`) enfocado en la atención directa por WhatsApp y cita previa.
 
-- **Etapa 5: Catálogo General (`/productos`)**
-  - Barra de filtrado dinámico por categorías (sincronizada con la URL).
-  - Listado en grilla responsiva con `ProductCard`.
-  - Estados vacíos si no hay coincidencias en la categoría seleccionada.
+- **Etapa 5: Catálogo General (`/productos`)** *(COMPLETADA V1)*
+  - Cabecera editorial con contexto de la colección.
+  - Barra de filtrado dinámico `CategoryFilter` conectada a `searchParams` (`/productos?categoria=...`).
+  - Grilla responsiva de productos con imágenes de gran porte, tipografía sutil y precio sin protagonismo invasivo.
+  - Bloque para consultas de medidas y maderas especiales al final del catálogo.
 
 - **Etapa 6: Detalle de Producto (`/productos/[slug]`)**
   - Galería de imágenes interactiva (`ProductGallery`).
