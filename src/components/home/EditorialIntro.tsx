@@ -20,16 +20,16 @@ export function EditorialIntro() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 text-xs md:text-sm text-[#7E7A73] font-light leading-relaxed">
             <p>
-              Cada creación se produce en nuestro taller propio a partir de
-              maderas estacionadas con rigurosos controles de humedad. El
-              tiempo que dedicamos al ensamble manual y al pulido de cada arista
-              se traduce en una presencia atemporal en el hogar.
+              Concebimos cada pieza a partir del diálogo entre la madera noble y
+              la precisión constructiva. La atención a las proporciones y al
+              pulido de cada arista busca lograr una presencia serena y armónica
+              en el hogar.
             </p>
             <p>
               Prescindimos de excesos formales y artificios superficiales. La
-              autenticidad de los materiales nobles habla por sí misma,
-              ofreciendo muebles duraderos concebidos para convivir por
-              generaciones.
+              autenticidad de las formas y la calidad de las terminaciones
+              ofrecen muebles concebidos para convivir de manera natural con el
+              espacio.
             </p>
           </div>
         </div>

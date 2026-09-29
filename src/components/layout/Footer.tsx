@@ -16,8 +16,7 @@ export function Footer() {
             </span>
             <p className="text-sm text-[#A8A49D] font-light leading-relaxed max-w-sm">
               Mobiliario contemporáneo concebido bajo principios de sobriedad
-              arquitectónica, selección rigurosa de maderas nobles y manufactura
-              artesanal a medida.
+              arquitectónica, líneas limpias y diseño perdurable.
             </p>
             <div className="pt-2">
               <a
@@ -26,7 +25,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-2 text-xs uppercase tracking-[0.18em] text-[#FBFBFA] border-b border-[#FBFBFA] pb-1 hover:text-[#A8A49D] hover:border-[#A8A49D] transition-colors"
               >
-                <span>Coordinar cita en showroom →</span>
+                <span>Consultar por WhatsApp →</span>
               </a>
             </div>
           </div>
@@ -58,16 +57,13 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Columna Showroom & Taller */}
+          {/* Columna Ubicación & Horarios */}
           <div className="md:col-span-2 space-y-4">
             <h4 className="text-[11px] uppercase tracking-[0.2em] text-[#7E7A73]">
-              Showroom
+              Ubicación
             </h4>
             <div className="space-y-2 text-xs text-[#A8A49D] leading-relaxed">
               <p className="text-[#FBFBFA]">
-                {siteConfig.contact.address.street}
-              </p>
-              <p>
                 {siteConfig.contact.address.city},{" "}
                 {siteConfig.contact.address.country}
               </p>

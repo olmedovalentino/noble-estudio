@@ -227,7 +227,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             </a>
 
             <p className="text-[11px] text-center text-[#7E7A73] font-light">
-              Atención directa con nuestro atelier · Presupuestos y adaptaciones sin cargo
+              Consultanos por disponibilidad, medidas y opciones.
             </p>
           </div>
         </div>

@@ -26,10 +26,9 @@ export const siteConfig = {
     instagram: "https://instagram.com/placeholder_muebles", // [PLACEHOLDER_INSTAGRAM]
     facebook: "https://facebook.com/placeholder_muebles", // [PLACEHOLDER_FACEBOOK]
     address: {
-      street: "Av. de los Muebles 1234", // [PLACEHOLDER_DIRECCION]
       city: "Buenos Aires",
       country: "Argentina",
-      note: "Showroom y atención con cita previa",
+      note: "Atención y consultas personalizadas por WhatsApp",
     },
     schedule: "Lunes a Viernes de 9:00 a 18:00 hs. Sábados de 9:00 a 13:00 hs.",
   },

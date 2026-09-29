@@ -14,9 +14,8 @@ export function ConsultationCTA() {
         </h2>
 
         <p className="text-sm md:text-base text-[#7E7A73] font-light max-w-xl mx-auto leading-relaxed">
-          Brindamos asesoramiento personalizado directo por WhatsApp para
-          responder dudas de medidas, maderas, presupuestos a medida y tiempos
-          de fabricación artesanal.
+          Brindamos asesoramiento directo por WhatsApp para responder dudas sobre
+          piezas de la colección, medidas y opciones de fabricación.
         </p>
 
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -40,11 +39,10 @@ export function ConsultationCTA() {
 
         <div className="pt-6 text-xs text-[#7E7A73] font-light space-y-1">
           <p>
-            Showroom: {siteConfig.contact.address.street},{" "}
-            {siteConfig.contact.address.city} ({siteConfig.contact.address.note})
+            {siteConfig.contact.address.city}, {siteConfig.contact.address.country} · {siteConfig.contact.address.note}
           </p>
           <p className="text-[11px] text-[#A8A49D]">
-            Horarios: {siteConfig.contact.schedule}
+            Horarios de atención: {siteConfig.contact.schedule}
           </p>
         </div>
       </div>

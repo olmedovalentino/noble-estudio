@@ -52,7 +52,7 @@ export default async function HomePage() {
       {/* 6. Quiebre de Atmósfera Inmersivo */}
       <AtmosphereBreak />
 
-      {/* 7. Consulta Directa por WhatsApp y Showroom */}
+      {/* 7. Consulta Directa por WhatsApp */}
       <ConsultationCTA />
     </div>
   );

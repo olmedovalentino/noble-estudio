@@ -193,6 +193,20 @@ export interface Product {
   - Página personalizada `src/app/not-found.tsx` con manejo de errores 404 mediante `notFound()`.
   - Simplificación de `ProductCard` en catálogo y Home (mostrando únicamente categoría, nombre y precio bajo la imagen).
 
-- **Etapa 7: Verificación, Responsive & Pulido Visual**
-  - Comprobación de visualización en mobile y desktop.
-  - Verificación de enlaces, generación de mensajes de WhatsApp y performance general.
+- **Etapa 7: Cierre y Pulido de la V1 Técnica** *(COMPLETADA)*
+  - Auditoría de textos provisionales: neutralización estricta de claims comerciales, procesos de fabricación, showroom físico y servicios no confirmados.
+  - Ajuste del microcopy en la ficha de producto a *"Consultanos por disponibilidad, medidas y opciones"*.
+  - Validación completa de compilación (`tsc`, `lint`, `next build` con SSG).
+  - Estructura técnica y visual 100% preparada y lista para producción.
+
+---
+
+## 7. Próxima Etapa: Integración de Identidad, Catálogo y Contenido Real
+
+Una vez provistos los activos definitivos por el cliente/negocio, se llevará a cabo una pasada integral de sustitución:
+
+1. **Identidad de Marca:** Definición final del nombre comercial, logotipo vectorial/isotipo en `/public/brand/` y favicon.
+2. **Canales Oficiales:** Asignación del número de WhatsApp definitivo y cuentas oficiales de contacto en `src/config/site.ts`.
+3. **Catálogo Definitivo:** Reemplazo de `MOCK_PRODUCTS` por los productos reales con sus medidas exactas, materiales auténticos y precios fijados.
+4. **Fotografía en Alta Resolución:** Carga de las fotografías profesionales en `/public/products/[slug]/` en formato WebP optimizado.
+5. **Categorías Finales:** Ajuste de la lista de categorías oficiales del negocio.
