@@ -42,7 +42,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         </div>
 
         {/* Ficha Tipográfica Inferior */}
-        <div className="pt-4 space-y-1.5">
+        <div className="pt-3.5 space-y-1">
           <div className="flex items-center justify-between">
             <span className="text-[10px] uppercase tracking-[0.22em] text-[#7E7A73]">
               {product.category}
@@ -55,10 +55,6 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           <h3 className="text-base font-serif text-[#141413] group-hover:text-[#7E7A73] transition-colors leading-snug">
             {product.name}
           </h3>
-
-          <p className="text-xs text-[#7E7A73] font-light line-clamp-1 pt-0.5">
-            {product.dimensions.formatted ?? `${product.dimensions.width}x${product.dimensions.depth} cm`} · {product.material}
-          </p>
         </div>
       </Link>
     </article>

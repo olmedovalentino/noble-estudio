@@ -184,11 +184,14 @@ export interface Product {
   - Grilla responsiva de productos con imágenes de gran porte, tipografía sutil y precio sin protagonismo invasivo.
   - Bloque para consultas de medidas y maderas especiales al final del catálogo.
 
-- **Etapa 6: Detalle de Producto (`/productos/[slug]`)**
-  - Galería de imágenes interactiva (`ProductGallery`).
-  - Ficha técnica completa (dimensiones, maderas, acabados, características).
-  - Botón principal de conversión con mensaje automático parametrizado por producto para WhatsApp.
-  - Metadatos dinámicos para SEO y Open Graph.
+- **Etapa 6: Detalle de Producto (`/productos/[slug]`)** *(COMPLETADA)*
+  - Galería interactiva `ProductGallery` con soporte de múltiples imágenes, selector de miniaturas y optimización con `next/image`.
+  - Jerarquía tipográfica editorial y ficha técnica arquitectónica sin encierro en cards (Medidas, Material, Acabados, Detalles de ensamble y Plazos de producción).
+  - Botón de conversión principal conectado a `getProductWhatsAppUrl(product.name)` con mensaje prellenado contextual ("Consultar por este producto") y estética refinada en carbón mate.
+  - Implementación de `generateStaticParams` para pre-renderizado SSG de todos los slugs y `generateMetadata` con Open Graph dinámico para redes y WhatsApp.
+  - Sección inferior "También puede interesarte" con 3 productos relacionados reutilizando `ProductGrid` y `ProductCard`.
+  - Página personalizada `src/app/not-found.tsx` con manejo de errores 404 mediante `notFound()`.
+  - Simplificación de `ProductCard` en catálogo y Home (mostrando únicamente categoría, nombre y precio bajo la imagen).
 
 - **Etapa 7: Verificación, Responsive & Pulido Visual**
   - Comprobación de visualización en mobile y desktop.
