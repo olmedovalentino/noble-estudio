@@ -153,10 +153,15 @@ export interface Product {
   - Base visual neutra y sobria configurada en `src/app/globals.css`.
   - Validaciones de TypeScript (`tsc --noEmit`), ESLint (`npm run lint`) y compilación de producción (`next build`) exitosas sin errores.
 
-- **Etapa 2: Capa de Datos & Utilidades**
-  - Definir tipos en `src/types/product.ts`.
-  - Crear utilidades de formato de moneda y generador de URL de WhatsApp (`lib/utils.ts`).
-  - Crear catálogo de prueba (8 a 10 productos MOCK representativos y variados) con sus respectivas categorías.
+- **Etapa 2: Capa de Datos & Utilidades** *(COMPLETADA)*
+  - Definidos tipos e interfaces estrictas en `src/types/product.ts` y `src/types/category.ts` (`Product`, `ProductDimensions`, `ProductImage`, `Category`, `CategorySlug`).
+  - Creado catálogo central de categorías en `src/data/categories.ts`.
+  - Creado catálogo MOCK de 9 productos representativos distribuidos en todas las categorías en `src/data/products.ts`.
+  - Creada capa asíncrona de acceso a datos (Data Access Layer) con `getProducts()`, `getProductBySlug()`, `getFeaturedProducts()`, `getProductsByCategory()`, `getCategories()`, `getCategoryBySlug()`.
+  - Configurado `formatPrice()` con soporte nativo para pesos argentinos (`ARS`, locale `es-AR` vía `Intl.NumberFormat`) conectado a `siteConfig`.
+  - Generada estructura local física para fotos en `public/products/[slug]/` con placeholders SVG elegantes y accesibles.
+  - Creados helpers directos de WhatsApp para productos y consultas generales en `src/lib/utils.ts`.
+  - Validaciones de TypeScript (`tsc --noEmit`), ESLint y producción (`next build`) verificadas al 100%.
 
 - **Etapa 3: Componentes Globales de Layout**
   - `Header` responsive con navegación clara (Inicio, Catálogo, Contacto).

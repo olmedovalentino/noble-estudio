@@ -44,6 +44,12 @@ export const siteConfig = {
     { id: "otros", label: "Otros" },
   ] as const,
 
+  // Configuración de moneda y localización
+  currency: {
+    code: "ARS",
+    locale: "es-AR",
+  },
+
   // Metadatos globales y SEO
   seo: {
     locale: "es_AR",
