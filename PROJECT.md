@@ -228,6 +228,13 @@ export interface Product {
     - Soporte de `prefers-reduced-motion: reduce`.
     - Verificación rigurosa en viewports 320px, 360px, 375px, 390px, 430px y 768px, y comprobación de regresiones en desktop (1280px+).
 
+- **Etapa 9: Preparación para Static Export y Despliegue en Cloudflare Pages** *(COMPLETADA)*
+  - `next.config.ts` configurado con `output: "export"` e `images: { unoptimized: true }`.
+  - Migración del filtrado dinámico de `/productos` a `CatalogView` cliente envuelto en `<Suspense>` con fallback estático completo (100% amigable con SEO y compatible con Static Export sin requerir servidor Node.js).
+  - Todas las 11 rutas pre-renderizadas como HTML estático en `/out` (`index.html`, `404.html`, `productos.html`, y las 7 fichas en `productos/[slug].html`).
+  - Verificación estricta de `.gitignore` para prevenir subida de `.next`, `out`, `node_modules` o archivos de configuración local.
+  - Validación completa con cero errores en `tsc --noEmit`, `npm run lint` y `npm run build`.
+
 ---
 
 ## 7. Próxima Etapa: Integración de Identidad, Catálogo y Contenido Real
