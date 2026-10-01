@@ -25,7 +25,7 @@ export function WhatsAppButton({
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className={`fixed bottom-6 right-6 z-40 flex items-center space-x-2.5 bg-[#141413] text-[#FBFBFA] px-4 py-2.5 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.15)] border border-[#2A2826] hover:bg-[#2A2826] transition-all duration-300 group hover:scale-[1.02] ${className}`}
+          className={`fixed bottom-[max(1.25rem,calc(env(safe-area-inset-bottom,0px)+0.75rem))] right-4 sm:right-6 z-40 flex items-center space-x-2.5 min-h-[44px] bg-[#141413] text-[#FBFBFA] px-3.5 sm:px-4 py-2.5 rounded-full shadow-[0_4px_24px_rgba(0,0,0,0.22)] border border-[#2A2826] hover:bg-[#2A2826] active:scale-95 transition-all duration-300 group ${className}`}
           aria-label="Consultar por WhatsApp"
         >
           {/* Icono vectorial minimalista de WhatsApp */}
@@ -53,7 +53,7 @@ export function WhatsAppButton({
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className={`inline-flex items-center justify-center space-x-3 w-full bg-[#141413] text-[#FBFBFA] py-4 px-6 text-xs uppercase tracking-[0.2em] font-medium border border-[#141413] hover:bg-[#2A2826] transition-all duration-300 text-center ${className}`}
+        className={`inline-flex items-center justify-center space-x-3 w-full bg-[#141413] text-[#FBFBFA] min-h-[48px] py-4 px-6 text-xs uppercase tracking-[0.2em] font-medium border border-[#141413] hover:bg-[#2A2826] active:bg-black transition-all duration-300 text-center ${className}`}
       >
         <span className="w-2 h-2 rounded-full bg-[#25D366]" />
         <span>{children ?? "Consultar por WhatsApp"}</span>
@@ -67,7 +67,7 @@ export function WhatsAppButton({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center space-x-2 text-xs uppercase tracking-[0.18em] border-b border-[#141413] pb-1 hover:text-[#7E7A73] hover:border-[#7E7A73] transition-colors ${className}`}
+      className={`inline-flex items-center space-x-2 text-xs uppercase tracking-[0.18em] border-b border-[#141413] min-h-[44px] py-2 hover:text-[#7E7A73] hover:border-[#7E7A73] transition-colors ${className}`}
     >
       <span>{children ?? "Consultar disponibilidad →"}</span>
     </a>

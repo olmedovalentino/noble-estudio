@@ -1,7 +1,7 @@
 export function EditorialIntro() {
   return (
-    <section className="py-24 md:py-36 max-w-7xl mx-auto px-6 md:px-12">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+    <section className="py-16 sm:py-24 md:py-36 max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start">
         <div className="lg:col-span-4">
           <span className="text-[10px] uppercase tracking-[0.28em] text-[#7E7A73] font-medium block">
             01 / Manifiesto
@@ -11,8 +11,8 @@ export function EditorialIntro() {
           </h2>
         </div>
 
-        <div className="lg:col-span-8 space-y-8">
-          <p className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#141413] leading-snug font-normal text-balance">
+        <div className="lg:col-span-8 space-y-6 sm:space-y-8">
+          <p className="text-xl sm:text-3xl md:text-4xl font-serif text-[#141413] leading-snug font-normal text-balance">
             “No diseñamos piezas aisladas, sino diálogos entre la luz, la
             arquitectura de los ambientes y el tacto natural de la madera
             genuina.”

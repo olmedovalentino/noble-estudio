@@ -19,6 +19,11 @@
   --foreground: #141413;
 }
 
+html {
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--background);
@@ -26,6 +31,8 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  touch-action: manipulation;
 }
 
 .font-serif {
@@ -50,4 +57,25 @@ body {
 
 .animate-fade-in {
   animation: subtle-fade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Ocultar barra de desplazamiento nativa preservando scroll táctil */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Respeto a preferencias de accesibilidad de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

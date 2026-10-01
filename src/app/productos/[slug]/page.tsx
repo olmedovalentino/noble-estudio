@@ -79,12 +79,12 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
   const whatsappUrl = getProductWhatsAppUrl(product.name);
 
   return (
-    <div className="pt-28 md:pt-36 pb-24 md:pb-36 max-w-7xl mx-auto px-6 md:px-12 space-y-20 md:space-y-32">
+    <div className="pt-24 sm:pt-28 md:pt-36 pb-16 md:pb-36 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 space-y-12 sm:space-y-16 md:space-y-32">
       {/* 1. Breadcrumb Discreto */}
-      <nav aria-label="Ruta de navegación" className="text-[11px] uppercase tracking-[0.2em] text-[#7E7A73]">
-        <ol className="flex items-center space-x-2 flex-wrap">
+      <nav aria-label="Ruta de navegación" className="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-[#7E7A73]">
+        <ol className="flex items-center space-x-2 flex-wrap gap-y-1">
           <li>
-            <Link href="/" className="hover:text-[#141413] transition-colors">
+            <Link href="/" className="hover:text-[#141413] transition-colors py-1">
               Inicio
             </Link>
           </li>
@@ -92,7 +92,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             /
           </li>
           <li>
-            <Link href="/productos" className="hover:text-[#141413] transition-colors">
+            <Link href="/productos" className="hover:text-[#141413] transition-colors py-1">
               Colección
             </Link>
           </li>
@@ -102,7 +102,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           <li>
             <Link
               href={`/productos?categoria=${product.category}`}
-              className="hover:text-[#141413] transition-colors"
+              className="hover:text-[#141413] transition-colors py-1"
             >
               {product.category}
             </Link>
@@ -117,20 +117,20 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
       </nav>
 
       {/* 2. Cuerpo Editorial: Galería + Ficha Técnica */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-start">
         {/* Columna Izquierda: Galería Protagonista */}
         <div className="lg:col-span-7">
           <ProductGallery images={product.images} productName={product.name} />
         </div>
 
         {/* Columna Derecha: Ficha y Jerarquía Tipográfica */}
-        <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-28">
-          {/* Encabezado del Mueble */}
-          <div className="space-y-3 border-b border-[#E8E5DF] pb-6">
+        <div className="lg:col-span-5 flex flex-col space-y-6 sm:space-y-8 lg:sticky lg:top-28">
+          {/* Encabezado del Mueble (order-1 en mobile y desktop) */}
+          <div className="order-1 space-y-2.5 sm:space-y-3 border-b border-[#E8E5DF] pb-5 sm:pb-6">
             <span className="text-[10px] uppercase tracking-[0.28em] text-[#7E7A73] font-medium block">
               {product.category}
             </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#141413] tracking-tight font-normal leading-[1.12]">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-serif text-[#141413] tracking-tight font-normal leading-[1.12]">
               {product.name}
             </h1>
             <div className="flex items-baseline space-x-4 pt-1">
@@ -145,33 +145,56 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             </div>
           </div>
 
-          {/* Descripción */}
-          <div className="space-y-4 text-xs sm:text-sm text-[#7E7A73] font-light leading-relaxed">
+          {/* CTA Principal: en mobile aparece inmediatamente después del precio (order-2), en desktop al final (order-4) */}
+          <div className="order-2 lg:order-4 pt-1 sm:pt-2 space-y-2.5 sm:space-y-3">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center space-x-3 bg-[#141413] text-[#FBFBFA] py-4 px-6 sm:px-8 text-xs uppercase tracking-[0.2em] font-medium min-h-[48px] hover:bg-[#2A2826] transition-all duration-300 text-center"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#25D366]" />
+              <span>Consultar por este producto</span>
+            </a>
+
+            <p className="text-[11px] text-center text-[#7E7A73] font-light">
+              Consultanos por disponibilidad, medidas y opciones.
+            </p>
+          </div>
+
+          {/* Descripción (order-3 en mobile, order-2 en desktop) */}
+          <div className="order-3 lg:order-2 space-y-3 sm:space-y-4 text-xs sm:text-sm text-[#7E7A73] font-light leading-relaxed">
             <p>{product.description}</p>
           </div>
 
-          {/* Bloque de Especificaciones Arquitectónicas */}
-          <div className="space-y-4 border-t border-[#E8E5DF] pt-6 text-xs">
+          {/* Bloque de Especificaciones Arquitectónicas (order-4 en mobile, order-3 en desktop) */}
+          <div className="order-4 lg:order-3 space-y-4 border-t border-[#E8E5DF] pt-5 sm:pt-6 text-xs">
             {/* Medidas */}
-            <div className="grid grid-cols-3 gap-2 py-2 border-b border-[#E8E5DF]/60">
-              <span className="uppercase tracking-[0.2em] text-[#7E7A73] font-medium">
-                Medidas
-              </span>
-              <span className="col-span-2 text-[#141413] font-light">
-                {product.dimensions.formatted ??
-                  `${product.dimensions.width} × ${product.dimensions.depth} × ${product.dimensions.height} cm`}
-              </span>
-            </div>
+            {product.dimensions && (
+              <div className="grid grid-cols-3 gap-2 py-2 border-b border-[#E8E5DF]/60">
+                <span className="uppercase tracking-[0.2em] text-[#7E7A73] font-medium">
+                  Medidas
+                </span>
+                <span className="col-span-2 text-[#141413] font-light">
+                  {product.dimensions.formatted ??
+                    (product.dimensions.width && product.dimensions.depth && product.dimensions.height
+                      ? `${product.dimensions.width} × ${product.dimensions.depth} × ${product.dimensions.height} cm`
+                      : "")}
+                </span>
+              </div>
+            )}
 
             {/* Material */}
-            <div className="grid grid-cols-3 gap-2 py-2 border-b border-[#E8E5DF]/60">
-              <span className="uppercase tracking-[0.2em] text-[#7E7A73] font-medium">
-                Material
-              </span>
-              <span className="col-span-2 text-[#141413] font-light">
-                {product.material}
-              </span>
-            </div>
+            {product.material && (
+              <div className="grid grid-cols-3 gap-2 py-2 border-b border-[#E8E5DF]/60">
+                <span className="uppercase tracking-[0.2em] text-[#7E7A73] font-medium">
+                  Material
+                </span>
+                <span className="col-span-2 text-[#141413] font-light">
+                  {product.material}
+                </span>
+              </div>
+            )}
 
             {/* Terminaciones */}
             {product.finishes && product.finishes.length > 0 && (
@@ -212,23 +235,6 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                   : "Entrega inmediata o a coordinar"}
               </span>
             </div>
-          </div>
-
-          {/* CTA Principal de Conversión hacia WhatsApp */}
-          <div className="pt-4 space-y-3">
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center space-x-3 bg-[#141413] text-[#FBFBFA] py-4 px-8 text-xs uppercase tracking-[0.22em] font-medium hover:bg-[#2A2826] transition-all duration-300 text-center"
-            >
-              <span className="w-2 h-2 rounded-full bg-[#25D366]" />
-              <span>Consultar por este producto</span>
-            </a>
-
-            <p className="text-[11px] text-center text-[#7E7A73] font-light">
-              Consultanos por disponibilidad, medidas y opciones.
-            </p>
           </div>
         </div>
       </div>

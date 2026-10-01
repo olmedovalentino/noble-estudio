@@ -3,12 +3,12 @@ import { getGeneralWhatsAppUrl } from "@/lib/utils";
 
 export function CraftsmanshipSection() {
   return (
-    <section id="filosofia" className="py-24 md:py-36 max-w-7xl mx-auto px-6 md:px-12">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <section id="filosofia" className="py-16 sm:py-24 md:py-36 max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
         {/* Imagen Editorial de Detalle / Taller */}
         <div className="lg:col-span-6 relative aspect-4/5 w-full bg-[#EAE8E2] overflow-hidden">
           <Image
-            src="/products/mesa-comedor-paraiso/2.svg"
+            src="/images/products/espejo-rectangular-petiribi-02.jpg"
             alt="Detalle de veta de madera natural y uniones artesanales en el taller"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
@@ -30,7 +30,7 @@ export function CraftsmanshipSection() {
             <span className="text-[10px] uppercase tracking-[0.28em] text-[#7E7A73] font-medium block">
               03 / Filosofía de Diseño
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#141413] tracking-tight font-normal leading-[1.14]">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-[#141413] tracking-tight font-normal leading-[1.14]">
               Líneas puras, proporción y atención al detalle.
             </h2>
           </div>
@@ -83,12 +83,12 @@ export function CraftsmanshipSection() {
             </div>
           </div>
 
-          <div className="pt-4">
+          <div className="pt-2 sm:pt-4">
             <a
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-3 text-xs uppercase tracking-[0.2em] bg-[#141413] text-[#FBFBFA] px-8 py-4 hover:bg-[#2A2826] transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center space-x-3 text-xs uppercase tracking-[0.2em] bg-[#141413] text-[#FBFBFA] px-8 py-4 min-h-[48px] hover:bg-[#2A2826] transition-colors text-center"
             >
               <span>Consultar por opciones a medida</span>
               <span>→</span>

@@ -26,7 +26,7 @@ export function SectionTitle({
           {tag}
         </span>
       )}
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[#141413] tracking-tight font-normal leading-[1.15]">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-[#141413] tracking-tight font-normal leading-[1.15]">
         {title}
       </h2>
       {description && (

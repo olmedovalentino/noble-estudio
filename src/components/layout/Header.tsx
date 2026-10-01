@@ -47,22 +47,37 @@ export function Header() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          isScrolled
-            ? "bg-[#FBFBFA]/95 backdrop-blur-md border-b border-[#E8E5DF] py-4 shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
-            : "bg-transparent py-6 md:py-7 border-b border-transparent"
+          isMobileMenuOpen
+            ? "bg-transparent py-4"
+            : isScrolled
+            ? "bg-[#FBFBFA]/95 backdrop-blur-md border-b border-[#E8E5DF] py-3 sm:py-4 shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
+            : "bg-linear-to-b from-[#141413]/25 via-[#141413]/5 to-transparent md:bg-transparent py-4 sm:py-5 md:py-7 border-b border-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between">
           {/* Logo / Nombre de marca */}
           <Link
             href="/"
-            className="group flex flex-col items-start"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="group flex flex-col items-start min-h-[44px] justify-center"
             aria-label={`${siteConfig.name} - Inicio`}
           >
-            <span className="text-sm md:text-base tracking-[0.22em] uppercase font-semibold text-[#141413] transition-colors group-hover:text-[#7E7A73]">
+            <span
+              className={`text-sm md:text-base tracking-[0.22em] uppercase font-semibold transition-colors ${
+                !isScrolled && !isMobileMenuOpen
+                  ? "text-[#FBFBFA] md:text-[#141413] drop-shadow-xs md:drop-shadow-none"
+                  : "text-[#141413] group-hover:text-[#7E7A73]"
+              }`}
+            >
               {siteConfig.name}
             </span>
-            <span className="text-[9px] tracking-[0.3em] uppercase text-[#7E7A73] font-light hidden sm:block">
+            <span
+              className={`text-[9px] tracking-[0.3em] uppercase font-light hidden sm:block ${
+                !isScrolled && !isMobileMenuOpen
+                  ? "text-[#E8E5DF] md:text-[#7E7A73]"
+                  : "text-[#7E7A73]"
+              }`}
+            >
               Mobiliario de autor
             </span>
           </Link>
@@ -81,7 +96,7 @@ export function Header() {
           </nav>
 
           {/* CTA Discreto WhatsApp & Menú Mobile */}
-          <div className="flex items-center space-x-5">
+          <div className="flex items-center space-x-3 sm:space-x-5">
             <a
               href={getGeneralWhatsAppUrl()}
               target="_blank"
@@ -91,28 +106,44 @@ export function Header() {
               <span>Atención Directa</span>
             </a>
 
-            {/* Botón Hamburguesa Mobile */}
+            {/* Botón Hamburguesa Mobile (Área táctil mínima 44x44px) */}
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-[#141413] hover:text-[#7E7A73] transition-colors focus:outline-hidden"
-              aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú de navegación"}
+              className={`md:hidden min-w-[44px] min-h-[44px] p-2.5 flex items-center justify-center -mr-1.5 transition-colors focus:outline-hidden ${
+                !isScrolled && !isMobileMenuOpen
+                  ? "text-[#FBFBFA] md:text-[#141413]"
+                  : "text-[#141413] hover:text-[#7E7A73]"
+              }`}
+              aria-label={isMobileMenuOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
               aria-expanded={isMobileMenuOpen}
             >
-              <div className="w-6 h-4 relative flex flex-col justify-between">
+              <div className="w-6 h-4 relative flex flex-col justify-between pointer-events-none">
                 <span
-                  className={`w-full h-[1.5px] bg-[#141413] transition-all duration-300 ${
-                    isMobileMenuOpen ? "rotate-45 translate-y-[7px]" : ""
+                  className={`w-full h-[1.5px] transition-all duration-300 ${
+                    isMobileMenuOpen
+                      ? "bg-[#141413] rotate-45 translate-y-[7px]"
+                      : !isScrolled
+                      ? "bg-[#FBFBFA] md:bg-[#141413]"
+                      : "bg-[#141413]"
                   }`}
                 />
                 <span
-                  className={`w-full h-[1.5px] bg-[#141413] transition-all duration-200 ${
-                    isMobileMenuOpen ? "opacity-0" : ""
+                  className={`w-full h-[1.5px] transition-all duration-200 ${
+                    isMobileMenuOpen
+                      ? "opacity-0"
+                      : !isScrolled
+                      ? "bg-[#FBFBFA] md:bg-[#141413]"
+                      : "bg-[#141413]"
                   }`}
                 />
                 <span
-                  className={`w-full h-[1.5px] bg-[#141413] transition-all duration-300 ${
-                    isMobileMenuOpen ? "-rotate-45 -translate-y-[7.5px]" : ""
+                  className={`w-full h-[1.5px] transition-all duration-300 ${
+                    isMobileMenuOpen
+                      ? "bg-[#141413] -rotate-45 -translate-y-[7.5px]"
+                      : !isScrolled
+                      ? "bg-[#FBFBFA] md:bg-[#141413]"
+                      : "bg-[#141413]"
                   }`}
                 />
               </div>
@@ -121,24 +152,24 @@ export function Header() {
         </div>
       </header>
 
-      {/* Menú Mobile Fullscreen / Drawer editorial */}
+      {/* Menú Mobile Fullscreen / Drawer editorial con soporte Safe Area */}
       <div
-        className={`fixed inset-0 z-30 bg-[#FBFBFA] flex flex-col justify-between p-8 pt-28 md:hidden transition-all duration-500 ease-in-out ${
+        className={`fixed inset-0 z-30 bg-[#FBFBFA] flex flex-col justify-between px-6 sm:px-10 pt-[max(5.5rem,calc(env(safe-area-inset-top,0px)+3.5rem))] pb-[max(2rem,calc(env(safe-area-inset-bottom,0px)+1.5rem))] md:hidden transition-all duration-400 ease-in-out overscroll-contain overflow-y-auto ${
           isMobileMenuOpen
             ? "opacity-100 pointer-events-auto translate-y-0"
             : "opacity-0 pointer-events-none -translate-y-4"
         }`}
         aria-hidden={!isMobileMenuOpen}
       >
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           <span className="text-[10px] uppercase tracking-[0.25em] text-[#7E7A73] block border-b border-[#E8E5DF] pb-2">
             Navegación
           </span>
-          <nav className="flex flex-col space-y-6">
+          <nav className="flex flex-col space-y-2">
             <Link
               href="/"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-2xl font-serif text-[#141413] hover:text-[#7E7A73] transition-colors"
+              className="text-2xl sm:text-3xl font-serif text-[#141413] hover:text-[#7E7A73] transition-colors py-2.5 min-h-[48px] flex items-center"
             >
               Inicio
             </Link>
@@ -147,7 +178,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-2xl font-serif text-[#141413] hover:text-[#7E7A73] transition-colors"
+                className="text-2xl sm:text-3xl font-serif text-[#141413] hover:text-[#7E7A73] transition-colors py-2.5 min-h-[48px] flex items-center"
               >
                 {link.label}
               </Link>
@@ -155,9 +186,9 @@ export function Header() {
           </nav>
         </div>
 
-        <div className="space-y-6 border-t border-[#E8E5DF] pt-6">
+        <div className="space-y-5 border-t border-[#E8E5DF] pt-6 mt-8">
           <div className="space-y-1">
-            <p className="text-xs uppercase tracking-[0.16em] text-[#7E7A73]">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-[#7E7A73]">
               Consultas & Citas
             </p>
             <p className="text-sm font-medium text-[#141413]">
@@ -169,9 +200,10 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-center text-xs uppercase tracking-[0.18em] bg-[#141413] text-[#FBFBFA] py-3.5 px-6"
+            className="w-full flex items-center justify-center space-x-2.5 text-xs uppercase tracking-[0.18em] bg-[#141413] text-[#FBFBFA] py-4 px-6 min-h-[48px] font-medium hover:bg-[#2A2826] transition-colors"
           >
-            Consultar por WhatsApp
+            <span className="w-2 h-2 rounded-full bg-[#25D366]" />
+            <span>Consultar por WhatsApp</span>
           </a>
         </div>
       </div>

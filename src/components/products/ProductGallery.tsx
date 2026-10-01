@@ -11,6 +11,7 @@ interface ProductGalleryProps {
 
 export function ProductGallery({ images, productName }: ProductGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
   if (!images || images.length === 0) {
     return (
@@ -22,33 +23,56 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
 
   const currentImage = images[selectedIndex] ?? images[0];
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+
+    if (diff > 45 && images.length > 1) {
+      // Swipe izquierda -> siguiente foto
+      setSelectedIndex((prev) => (prev + 1) % images.length);
+    } else if (diff < -45 && images.length > 1) {
+      // Swipe derecha -> foto anterior
+      setSelectedIndex((prev) => (prev - 1 + images.length) % images.length);
+    }
+    setTouchStart(null);
+  };
+
   return (
-    <div className="space-y-4">
-      {/* Contenedor Fotográfico Principal */}
-      <div className="relative aspect-4/5 w-full overflow-hidden bg-[#F3F1EC]">
+    <div className="space-y-3 sm:space-y-4">
+      {/* Contenedor Fotográfico Principal con soporte de Swipe Táctil */}
+      <div
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        className="relative aspect-4/5 w-full overflow-hidden bg-[#F3F1EC] select-none touch-pan-y"
+      >
         <Image
           src={currentImage.src}
           alt={currentImage.alt || `${productName} - Vista ${selectedIndex + 1}`}
           fill
           priority
           sizes="(max-width: 1024px) 100vw, 55vw"
-          className="object-cover object-center transition-all duration-500 ease-out"
+          className="object-cover object-center transition-all duration-300 ease-out"
         />
 
         {/* Indicador sutil de imagen en móvil */}
         {images.length > 1 && (
-          <div className="absolute bottom-4 right-4 md:hidden bg-[#141413]/70 backdrop-blur-xs text-[#FBFBFA] px-2.5 py-1 text-[10px] tracking-widest font-mono">
+          <div className="absolute bottom-3 right-3 md:hidden bg-[#141413]/75 backdrop-blur-xs text-[#FBFBFA] px-2.5 py-1 text-[10px] tracking-widest font-mono">
             {selectedIndex + 1} / {images.length}
           </div>
         )}
       </div>
 
-      {/* Miniaturas de Navegación Editorial */}
+      {/* Miniaturas de Navegación Editorial con área táctil cómoda */}
       {images.length > 1 && (
         <div
           role="tablist"
           aria-label="Vistas fotográficas del producto"
-          className="grid grid-cols-4 sm:grid-cols-5 gap-3 pt-1"
+          className="grid grid-cols-4 sm:grid-cols-5 gap-2 sm:gap-3 pt-0.5"
         >
           {images.map((image, index) => {
             const isSelected = index === selectedIndex;
@@ -60,9 +84,9 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
                 aria-selected={isSelected}
                 aria-label={`Ver foto ${index + 1} de ${images.length} para ${productName}`}
                 onClick={() => setSelectedIndex(index)}
-                className={`relative aspect-4/5 w-full overflow-hidden bg-[#F3F1EC] transition-all duration-200 cursor-pointer focus:outline-hidden ${
+                className={`relative aspect-4/5 w-full overflow-hidden bg-[#F3F1EC] transition-all duration-200 cursor-pointer min-h-[44px] focus:outline-hidden ${
                   isSelected
-                    ? "ring-1 ring-[#141413] opacity-100"
+                    ? "ring-1.5 ring-[#141413] opacity-100"
                     : "opacity-60 hover:opacity-100"
                 }`}
               >

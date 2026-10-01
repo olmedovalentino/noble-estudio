@@ -27,8 +27,8 @@ export default async function HomePage() {
       <CategoryBespokeGrid categories={categories} />
 
       {/* 4. Productos Destacados */}
-      <section className="py-24 md:py-36 max-w-7xl mx-auto px-6 md:px-12 w-full space-y-16">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#E8E5DF] pb-8">
+      <section className="py-16 md:py-36 max-w-7xl mx-auto px-5 sm:px-6 md:px-12 w-full space-y-10 md:space-y-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#E8E5DF] pb-6 md:pb-8">
           <SectionTitle
             tag="03 / Selección de Autor"
             title="Piezas Destacadas"
@@ -36,7 +36,7 @@ export default async function HomePage() {
           />
           <Link
             href="/productos"
-            className="text-xs uppercase tracking-[0.2em] text-[#141413] border-b border-[#141413] pb-1 hover:text-[#7E7A73] hover:border-[#7E7A73] transition-colors shrink-0 self-start md:self-auto"
+            className="inline-flex items-center min-h-[44px] text-xs uppercase tracking-[0.2em] text-[#141413] border-b border-[#141413] hover:text-[#7E7A73] hover:border-[#7E7A73] transition-colors shrink-0 self-start md:self-auto"
           >
             Explorar todo el catálogo ({featuredProducts.length} destacadas) →
           </Link>

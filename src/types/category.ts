@@ -7,11 +7,9 @@
 
 export type CategorySlug =
   | "mesas"
-  | "sillas"
-  | "racks-tv"
-  | "comodas"
-  | "mesas-de-luz"
-  | "otros";
+  | "espejos"
+  | "banquetas"
+  | "recibidores";
 
 export interface Category {
   id: CategorySlug;

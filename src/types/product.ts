@@ -4,11 +4,13 @@ import { CategorySlug } from "./category";
  * Dimensiones físicas de un mueble.
  */
 export interface ProductDimensions {
-  width: number; // Ancho en centímetros
-  height: number; // Alto en centímetros
-  depth: number; // Profundidad en centímetros
-  unit?: "cm" | "mm"; // Unidad de medida (por defecto 'cm')
-  formatted?: string; // Cadena legible preformateada (ej: "180 x 90 x 75 cm")
+  width?: number; // Ancho en centímetros
+  height?: number; // Alto en centímetros
+  depth?: number; // Profundidad en centímetros
+  diameter?: number; // Diámetro en centímetros (para piezas circulares)
+  frameWidth?: number; // Ancho del marco en centímetros (para espejos)
+  unit?: "cm" | "mm" | "m"; // Unidad de medida (por defecto 'cm')
+  formatted?: string; // Cadena legible preformateada (ej: "2,00 m × 0,80 m · Marco 12 cm")
 }
 
 /**
@@ -36,10 +38,10 @@ export interface Product {
   shortDescription: string;
   description: string;
   images: ProductImage[];
-  dimensions: ProductDimensions;
-  material: string;
-  finishes: string[]; // Terminaciones y acabados disponibles
-  features: string[]; // Puntos clave y especificaciones técnicas
+  dimensions?: ProductDimensions;
+  material?: string;
+  finishes?: string[]; // Terminaciones y acabados disponibles
+  features?: string[]; // Puntos clave y especificaciones técnicas
   featured: boolean; // Si aparece en la sección destacados de Home
   available: boolean; // Si está disponible para encargo o entrega inmediata
   manufacturingDays?: number; // Días estimados de fabricación artesanal (opcional)

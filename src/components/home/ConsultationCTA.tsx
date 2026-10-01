@@ -3,17 +3,17 @@ import { getGeneralWhatsAppUrl } from "@/lib/utils";
 
 export function ConsultationCTA() {
   return (
-    <section id="contacto" className="py-24 md:py-36 bg-[#FBFBFA]">
-      <div className="max-w-4xl mx-auto px-6 md:px-12 text-center space-y-8">
+    <section id="contacto" className="py-16 sm:py-24 md:py-36 bg-[#FBFBFA]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-12 text-center space-y-6 sm:space-y-8">
         <span className="text-[10px] uppercase tracking-[0.28em] text-[#7E7A73] font-medium block">
           04 / Atención Personalizada
         </span>
 
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#141413] tracking-tight font-normal leading-[1.15] text-balance">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-[#141413] tracking-tight font-normal leading-[1.15] text-balance">
           Conversemos sobre tu espacio, plano o proyecto de interiorismo.
         </h2>
 
-        <p className="text-sm md:text-base text-[#7E7A73] font-light max-w-xl mx-auto leading-relaxed">
+        <p className="text-xs sm:text-sm md:text-base text-[#7E7A73] font-light max-w-xl mx-auto leading-relaxed">
           Brindamos asesoramiento directo por WhatsApp para responder dudas sobre
           piezas de la colección, medidas y opciones de fabricación.
         </p>

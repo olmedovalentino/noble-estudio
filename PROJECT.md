@@ -199,6 +199,35 @@ export interface Product {
   - Validación completa de compilación (`tsc`, `lint`, `next build` con SSG).
   - Estructura técnica y visual 100% preparada y lista para producción.
 
+- **Etapa 8: Auditoría y Optimización Mobile Completa V1** *(COMPLETADA)*
+  - **Header & Drawer Mobile:**
+    - Altura optimizada y botón hamburguesa con área táctil accesible de 44x44px, atributos `aria-expanded` y `aria-label`.
+    - Menú overlay a pantalla completa usando `100dvh` y paddings dinámicos con `env(safe-area-inset-top)` y `env(safe-area-inset-bottom)`.
+    - Bloqueo de scroll en `<body>` mientras el menú está abierto y cierre automático al seleccionar una ruta.
+    - Gradiente de respaldo oscuro para contraste impecable sobre fotografías claras u oscuras.
+  - **Hero & Primer Impacto:**
+    - Altura `100dvh` para evitar saltos de layout por las barras dinámicas del navegador móvil en iOS/Android.
+    - Tipografía de título fluida y equilibrada (`text-[32px] sm:text-5xl`), evitando saturación en pantallas de 320px–390px.
+    - Overlay de gradiente oscuro (`from-[#141413]/85`) para legibilidad fotográfica premium. Botones con touch target de 48px de altura y full width en mobile.
+  - **Catálogo (`/productos`) — Decisión de Grilla:**
+    - **1 columna en smartphones (<640px)**, 2 columnas en tablets (640px–1023px) y 3 columnas en desktop (1024px+).
+    - *Fundamento:* Catálogo selecto de 7 piezas de alto valor ($340.000–$740.000). A 2 columnas en smartphones (160px por tarjeta), la imagen se reducía a 200px de altura, perdiendo la apreciación de la veta del petiribí/roble, los ensambles y el mármol, asemejándose a un marketplace genérico. La columna única proporciona una escala editorial generosa y digna de una firma de autor, navegable en pocos scrolls continuos.
+    - Filtros horizontales por categoría con scroll táctil suave (`overflow-x: auto`), sangrado de pantalla completa en mobile (`-mx-4 px-4`), pills con contraste visual y scrollbars invisibles (`.no-scrollbar`).
+  - **Ficha de Producto (`/productos/[slug]`):**
+    - Jerarquía mobile reordenada con CSS Flexbox order para priorizar la acción comercial:
+      `Fotografía / Galería ↓ Categoría ↓ Nombre ↓ Precio ↓ CTA WhatsApp (min-h 48px) ↓ Descripción ↓ Especificaciones Técnicas (Medidas / Material / Acabados) ↓ Piezas Relacionadas`.
+    - Galería mobile táctil con soporte nativo de gestos swipe (`onTouchStart`/`onTouchEnd`), contador de diapositivas (`1 / 4`) y miniaturas touch-friendly (>=44x44px) sin dependencias externas pesadas.
+  - **Botón Flotante de WhatsApp:**
+    - Integración con safe areas de iPhone (`bottom-[max(1.25rem,calc(env(safe-area-inset-bottom,0px)+0.75rem))]`).
+    - Tamaño táctil ergonómico (>=44px), sombra suave y posicionamiento no invasivo (`right-4 sm:right-6`).
+  - **Footer:**
+    - Reorganización de las 4 columnas apiladas de desktop en una estructura editorial mobile compacta: Manifiesto a ancho completo, subgrilla de 2 columnas para Colección y Contacto, y Ubicación debajo, con enlaces de altura táctil cómoda (min-h 36-44px).
+  - **Global & Accesibilidad:**
+    - `globals.css` configurado con `overflow-x: clip` en html/body para eliminar scrolls horizontales accidentales.
+    - `touch-action: manipulation` para suprimir el retardo de 300ms en navegadores móviles.
+    - Soporte de `prefers-reduced-motion: reduce`.
+    - Verificación rigurosa en viewports 320px, 360px, 375px, 390px, 430px y 768px, y comprobación de regresiones en desktop (1280px+).
+
 ---
 
 ## 7. Próxima Etapa: Integración de Identidad, Catálogo y Contenido Real

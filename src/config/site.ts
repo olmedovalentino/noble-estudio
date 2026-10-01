@@ -36,11 +36,9 @@ export const siteConfig = {
   // Categorías comerciales iniciales (provisionales)
   categories: [
     { id: "mesas", label: "Mesas" },
-    { id: "sillas", label: "Sillas" },
-    { id: "racks-tv", label: "Racks TV" },
-    { id: "comodas", label: "Cómodas" },
-    { id: "mesas-de-luz", label: "Mesas de luz" },
-    { id: "otros", label: "Otros" },
+    { id: "espejos", label: "Espejos" },
+    { id: "banquetas", label: "Banquetas" },
+    { id: "recibidores", label: "Recibidores" },
   ] as const,
 
   // Configuración de moneda y localización
