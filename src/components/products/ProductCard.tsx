@@ -15,12 +15,12 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
     <article className="group flex flex-col">
       <Link
         href={`/productos/${product.slug}`}
-        className="block focus:outline-hidden"
+        className="block focus:outline-hidden focus-visible:ring-1 focus-visible:ring-[#141413] focus-visible:ring-offset-4 transition-shadow"
         aria-label={`Ver detalle de ${product.name}`}
       >
         {/* Contenedor de Fotografía Editorial */}
         <div className="relative aspect-4/5 w-full overflow-hidden bg-[#F3F1EC]">
-          {mainImage && (
+          {mainImage ? (
             <Image
               src={mainImage.src}
               alt={mainImage.alt}
@@ -29,6 +29,12 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-103"
             />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center p-6 text-center select-none">
+              <span className="text-[11px] uppercase tracking-[0.24em] text-[#7E7A73] font-medium">
+                Próximamente
+              </span>
+            </div>
           )}
 
           {/* Sutil indicador de disponibilidad / artesanía */}

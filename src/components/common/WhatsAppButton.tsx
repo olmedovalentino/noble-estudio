@@ -29,7 +29,7 @@ export function WhatsAppButton({
           aria-label="Consultar por WhatsApp"
         >
           {/* Icono vectorial minimalista de WhatsApp */}
-          <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse motion-reduce:animate-none" />
           <svg
             className="w-4 h-4 text-[#FBFBFA] transition-transform group-hover:scale-105"
             viewBox="0 0 24 24"

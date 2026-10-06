@@ -2,12 +2,28 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
 import { getGeneralWhatsAppUrl } from "@/lib/utils";
 
 export function Header() {
+  const pathname = usePathname();
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Reiniciar estado inmediatamente durante el render al cambiar de ruta
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setIsScrolled(false);
+    setIsMobileMenuOpen(false);
+  }
+
+  // Posicionar scroll arriba al navegar
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,7 +34,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Cerrar menú al cambiar de ruta o presionar Escape
+  // Cerrar menú al presionar Escape
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIsMobileMenuOpen(false);
@@ -39,8 +55,8 @@ export function Header() {
 
   const navLinks = [
     { href: "/productos", label: "Colección" },
-    { href: "/#filosofia", label: "Taller & Diseño" },
-    { href: "/#contacto", label: "Contacto" },
+    { href: "/taller", label: "Taller & Diseño" },
+    { href: "/contacto", label: "Contacto" },
   ];
 
   return (
@@ -95,28 +111,27 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA Discreto WhatsApp & Menú Mobile */}
+          {/* Columna derecha: reserva exactamente el espacio de 'Atención Directa' en desktop para conservar la posición horizontal original del menú */}
           <div className="flex items-center space-x-3 sm:space-x-5">
-            <a
-              href={getGeneralWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden lg:inline-flex items-center space-x-2 text-[11px] uppercase tracking-[0.18em] border border-[#2A2826] text-[#141413] px-4 py-2 hover:bg-[#141413] hover:text-[#FBFBFA] transition-all duration-300"
+            <div
+              className="hidden lg:inline-flex items-center space-x-2 text-[11px] uppercase tracking-[0.18em] border border-transparent px-4 py-2 invisible pointer-events-none select-none"
+              aria-hidden="true"
             >
               <span>Atención Directa</span>
-            </a>
+            </div>
 
             {/* Botón Hamburguesa Mobile (Área táctil mínima 44x44px) */}
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`md:hidden min-w-[44px] min-h-[44px] p-2.5 flex items-center justify-center -mr-1.5 transition-colors focus:outline-hidden ${
+              className={`md:hidden min-w-[44px] min-h-[44px] p-2.5 flex items-center justify-center -mr-1.5 transition-colors focus:outline-hidden focus-visible:ring-1 focus-visible:ring-[#141413] focus-visible:ring-offset-2 ${
                 !isScrolled && !isMobileMenuOpen
                   ? "text-[#FBFBFA] md:text-[#141413]"
                   : "text-[#141413] hover:text-[#7E7A73]"
               }`}
               aria-label={isMobileMenuOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
               aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation-drawer"
             >
               <div className="w-6 h-4 relative flex flex-col justify-between pointer-events-none">
                 <span
@@ -154,6 +169,7 @@ export function Header() {
 
       {/* Menú Mobile Fullscreen / Drawer editorial con soporte Safe Area */}
       <div
+        id="mobile-navigation-drawer"
         className={`fixed inset-0 z-30 bg-[#FBFBFA] flex flex-col justify-between px-6 sm:px-10 pt-[max(5.5rem,calc(env(safe-area-inset-top,0px)+3.5rem))] pb-[max(2rem,calc(env(safe-area-inset-bottom,0px)+1.5rem))] md:hidden transition-all duration-400 ease-in-out overscroll-contain overflow-y-auto ${
           isMobileMenuOpen
             ? "opacity-100 pointer-events-auto translate-y-0"

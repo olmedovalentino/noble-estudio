@@ -4,13 +4,16 @@ import { getCategories, getProducts } from "@/data";
 import { CatalogView } from "@/components/products/CatalogView";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { CategoryFilter } from "@/components/products/CategoryFilter";
-import { getGeneralWhatsAppUrl } from "@/lib/utils";
+import { siteConfig } from "@/config/site";
 import { Category, Product } from "@/types";
 
 export const metadata: Metadata = {
   title: "Catálogo de Colección",
   description:
     "Catálogo completo de muebles contemporáneos de fabricación propia. Espejos, mesas, banquetas y recibidores de diseño.",
+  alternates: {
+    canonical: `${siteConfig.url}/productos`,
+  },
 };
 
 function CatalogFallback({
@@ -43,7 +46,12 @@ function CatalogFallback({
         </div>
       </div>
 
-      <ProductGrid products={initialProducts} />
+      <ProductGrid
+        products={[
+          ...initialProducts.filter((p) => p.images && p.images.length > 0),
+          ...initialProducts.filter((p) => !p.images || p.images.length === 0),
+        ]}
+      />
     </>
   );
 }
@@ -66,32 +74,6 @@ export default async function ProductosPage() {
       >
         <CatalogView initialProducts={products} categories={categories} />
       </Suspense>
-
-      {/* Bloque Inferior: Consulta por Medidas Especiales */}
-      <div className="mt-16 md:mt-24 p-6 sm:p-8 md:p-12 bg-[#F5F4F0] border border-[#E8E5DF] flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6">
-        <div className="space-y-2 max-w-xl">
-          <span className="text-[10px] uppercase tracking-[0.24em] text-[#7E7A73] font-medium block">
-            Fabricación Especial
-          </span>
-          <h3 className="text-xl sm:text-2xl font-serif text-[#141413]">
-            ¿Buscás dimensiones o materiales específicos?
-          </h3>
-          <p className="text-xs md:text-sm text-[#7E7A73] font-light leading-relaxed">
-            Podemos producir cualquiera de los modelos de este catálogo adaptado a
-            las medidas exactas de tu ambiente o con otra madera noble de nuestra
-            reserva.
-          </p>
-        </div>
-
-        <a
-          href={getGeneralWhatsAppUrl()}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full md:w-auto text-center justify-center shrink-0 text-xs uppercase tracking-[0.2em] bg-[#141413] text-[#FBFBFA] px-8 py-4 min-h-[48px] hover:bg-[#2A2826] transition-colors"
-        >
-          Consultar por medidas especiales →
-        </a>
-      </div>
     </div>
   );
 }

@@ -11,6 +11,7 @@ export function CategoryFilter({
   activeCategory,
 }: CategoryFilterProps) {
   const isAllActive = !activeCategory;
+  const isCustomActive = activeCategory === "a-medida";
 
   return (
     <nav
@@ -44,6 +45,17 @@ export function CategoryFilter({
           </Link>
         );
       })}
+
+      <Link
+        href="/productos?categoria=a-medida"
+        className={`shrink-0 text-xs uppercase tracking-[0.16em] px-3.5 py-2 sm:px-4 sm:py-2.5 min-h-[40px] flex items-center transition-all ${
+          isCustomActive
+            ? "bg-[#141413] text-[#FBFBFA]"
+            : "text-[#7E7A73] hover:text-[#141413] hover:bg-[#F3F1EC] bg-[#F5F4F0] sm:bg-transparent"
+        }`}
+      >
+        A Medida
+      </Link>
     </nav>
   );
 }

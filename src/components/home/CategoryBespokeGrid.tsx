@@ -6,15 +6,32 @@ interface CategoryBespokeGridProps {
   categories: Category[];
 }
 
-export function CategoryBespokeGrid({ categories }: CategoryBespokeGridProps) {
-  // Asignamos una imagen representativa para cada categoría activa
-  const categoryImages: Record<string, string> = {
-    espejos: "/images/products/espejo-rectangular-petiribi-01.jpg",
-    mesas: "/products/placeholder.svg",
-    banquetas: "/products/placeholder.svg",
-    recibidores: "/products/placeholder.svg",
-  };
+interface CategoryMedia {
+  src: string;
+  objectPosition: string;
+}
 
+// Fotografías reales de productos Noble Estudio seleccionadas por composición para cada tipología
+const CATEGORY_MEDIA: Record<string, CategoryMedia> = {
+  mesas: {
+    src: "/images/products/mesa-apoyo-petiribi-marmol-02.jpeg",
+    objectPosition: "center 65%",
+  },
+  espejos: {
+    src: "/images/products/espejo-rectangular-petiribi-01.jpg",
+    objectPosition: "center 30%",
+  },
+  banquetas: {
+    src: "/images/products/banqueta-petiribi-01.jpeg",
+    objectPosition: "center 55%",
+  },
+  recibidores: {
+    src: "/images/products/recibidor-cedro-01.jpeg",
+    objectPosition: "center 60%",
+  },
+};
+
+export function CategoryBespokeGrid({ categories }: CategoryBespokeGridProps) {
   return (
     <section className="py-14 sm:py-20 md:py-28 bg-[#F5F4F0] border-y border-[#E8E5DF]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 space-y-10 sm:space-y-14">
@@ -54,6 +71,11 @@ export function CategoryBespokeGrid({ categories }: CategoryBespokeGridProps) {
                 ? "aspect-4/3 md:aspect-auto md:h-full"
                 : "aspect-4/3";
 
+            const media = CATEGORY_MEDIA[cat.slug] ?? {
+              src: "/images/products/espejo-rectangular-petiribi-01.jpg",
+              objectPosition: "center",
+            };
+
             return (
               <Link
                 key={cat.id}
@@ -62,11 +84,12 @@ export function CategoryBespokeGrid({ categories }: CategoryBespokeGridProps) {
               >
                 {/* Imagen de fondo */}
                 <Image
-                  src={categoryImages[cat.slug] ?? "/products/placeholder.svg"}
+                  src={media.src}
                   alt={cat.name}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className={`object-cover object-center transition-transform duration-700 ease-out group-hover:scale-104 brightness-95 ${aspectClass}`}
+                  style={{ objectPosition: media.objectPosition }}
+                  className={`object-cover transition-transform duration-700 ease-out group-hover:scale-104 brightness-95 ${aspectClass}`}
                 />
 
                 {/* Filtro degradado sutil */}

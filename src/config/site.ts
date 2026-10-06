@@ -1,36 +1,32 @@
 /**
- * Configuración central del sitio y datos del negocio (PLACEHOLDERS).
- * 
- * NOTA: Los siguientes valores son provisionales y están centralizados
- * para permitir su sustitución inmediata cuando se defina la identidad
- * comercial, marca y datos de contacto definitivos.
+ * Configuración central del sitio y datos comerciales oficiales de Noble Estudio.
  */
 
 export const siteConfig = {
-  // Identidad provisional de la marca
-  name: "Muebles & Diseño", // [PLACEHOLDER_NOMBRE_NEGOCIO]
-  shortName: "Muebles",
+  // Identidad oficial de la marca
+  name: "Noble Estudio",
+  shortName: "Noble Estudio",
   description:
-    "Catálogo comercial de muebles de diseño para el hogar y espacios contemporáneos. Fabricación de calidad y atención directa por WhatsApp.",
-  url: "https://ejemplo-muebles.com", // [PLACEHOLDER_URL]
+    "Mobiliario de autor y diseño contemporáneo. Fabricación propia en maderas nobles, proporciones arquitectónicas y atención personalizada por WhatsApp.",
+  url: "https://nobleestudio.com.ar",
 
   // Canales de contacto comercial
   contact: {
     whatsapp: {
-      phone: "5491112345678", // [PLACEHOLDER_TELEFONO_WHATSAPP]: código de país + área + número (sin símbolos ni espacios)
-      displayPhone: "+54 9 11 1234-5678",
+      phone: "5493513844333", // WhatsApp: 3513844333 (Córdoba, Argentina -> formato internacional: 5493513844333)
+      displayPhone: "+54 9 351 384-4333",
       defaultMessage:
         "Hola, me gustaría consultar por los muebles de su catálogo.",
     },
-    email: "contacto@ejemplo.com", // [PLACEHOLDER_EMAIL]
-    instagram: "https://instagram.com/placeholder_muebles", // [PLACEHOLDER_INSTAGRAM]
-    facebook: "https://facebook.com/placeholder_muebles", // [PLACEHOLDER_FACEBOOK]
+    email: "noble.estudio.muebles@gmail.com",
+    instagram: "https://www.instagram.com/noble.estudioarg/",
+    instagramHandle: "@noble.estudioarg",
     address: {
-      city: "Buenos Aires",
+      city: "Mendiolaza",
+      province: "Córdoba",
       country: "Argentina",
-      note: "Atención y consultas personalizadas por WhatsApp",
+      fullLocation: "Mendiolaza, Córdoba, Argentina",
     },
-    schedule: "Lunes a Viernes de 9:00 a 18:00 hs. Sábados de 9:00 a 13:00 hs.",
   },
 
   // Categorías comerciales iniciales (provisionales)

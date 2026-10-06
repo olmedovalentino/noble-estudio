@@ -15,8 +15,13 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
 
   if (!images || images.length === 0) {
     return (
-      <div className="relative aspect-4/5 w-full bg-[#F3F1EC] flex items-center justify-center">
-        <span className="text-xs text-[#7E7A73]">Sin imagen disponible</span>
+      <div className="relative aspect-4/5 w-full overflow-hidden bg-[#F3F1EC] flex flex-col items-center justify-center p-8 text-center select-none space-y-2">
+        <span className="text-xs uppercase tracking-[0.26em] text-[#7E7A73] font-medium">
+          Próximamente
+        </span>
+        <p className="text-[11px] text-[#A8A49D] font-light tracking-wide">
+          Fotografías disponibles próximamente.
+        </p>
       </div>
     );
   }
@@ -84,7 +89,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
                 aria-selected={isSelected}
                 aria-label={`Ver foto ${index + 1} de ${images.length} para ${productName}`}
                 onClick={() => setSelectedIndex(index)}
-                className={`relative aspect-4/5 w-full overflow-hidden bg-[#F3F1EC] transition-all duration-200 cursor-pointer min-h-[44px] focus:outline-hidden ${
+                className={`relative aspect-4/5 w-full overflow-hidden bg-[#F3F1EC] transition-all duration-200 cursor-pointer min-h-[44px] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#141413] focus-visible:ring-offset-2 ${
                   isSelected
                     ? "ring-1.5 ring-[#141413] opacity-100"
                     : "opacity-60 hover:opacity-100"

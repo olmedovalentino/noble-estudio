@@ -38,14 +38,6 @@ export function Footer() {
                 Colección
               </h4>
               <ul className="space-y-1 md:space-y-2">
-                <li>
-                  <Link
-                    href="/productos"
-                    className="inline-block py-1 text-xs text-[#E8E5DF] hover:text-[#FFFFFF] transition-colors tracking-wide"
-                  >
-                    Ver Catálogo
-                  </Link>
-                </li>
                 {CATEGORIES.map((cat) => (
                   <li key={cat.id}>
                     <Link
@@ -97,34 +89,24 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Columna Ubicación & Horarios */}
+          {/* Columna Ubicación */}
           <div className="md:col-span-2 space-y-3 md:space-y-4 pt-2 md:pt-0">
             <h4 className="text-[11px] uppercase tracking-[0.2em] text-[#7E7A73]">
               Ubicación
             </h4>
-            <div className="space-y-1.5 text-xs text-[#A8A49D] leading-relaxed">
-              <p className="text-[#FBFBFA]">
-                {siteConfig.contact.address.city},{" "}
-                {siteConfig.contact.address.country}
-              </p>
-              <p className="text-[11px] text-[#7E7A73]">
-                {siteConfig.contact.address.note}
-              </p>
-              <p className="text-[11px] text-[#7E7A73] pt-1">
-                {siteConfig.contact.schedule}
+            <div className="text-xs text-[#A8A49D] leading-relaxed">
+              <p>
+                {siteConfig.contact.address.fullLocation}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Fila inferior: copyright y aviso legal */}
-        <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between text-[11px] text-[#7E7A73] space-y-4 md:space-y-0">
+        {/* Fila inferior: copyright */}
+        <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between text-[11px] text-[#7E7A73]">
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. Todos los derechos
             reservados.
-          </p>
-          <p className="text-[10px] tracking-wider uppercase text-[#54524E]">
-            Catálogo Comercial Provisional (Datos MOCK para desarrollo)
           </p>
         </div>
       </div>

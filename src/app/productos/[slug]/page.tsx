@@ -4,8 +4,9 @@ import { notFound } from "next/navigation";
 import { getProductBySlug, getProducts, getProductsByCategory } from "@/data";
 import { ProductGallery } from "@/components/products/ProductGallery";
 import { ProductGrid } from "@/components/products/ProductGrid";
+import { ProductPricing } from "@/components/products/ProductPricing";
 import { siteConfig } from "@/config/site";
-import { formatPrice, getProductWhatsAppUrl } from "@/lib/utils";
+import { getProductWhatsAppUrl } from "@/lib/utils";
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>;
@@ -31,10 +32,18 @@ export async function generateMetadata({
   }
 
   const primaryImage = product.images.find((img) => img.isMain) ?? product.images[0];
+  const ogImageUrl = primaryImage
+    ? primaryImage.src.startsWith("http")
+      ? primaryImage.src
+      : `${siteConfig.url}${primaryImage.src}`
+    : `${siteConfig.url}/images/og-image.jpg`;
 
   return {
     title: `${product.name} | ${siteConfig.name}`,
     description: product.shortDescription,
+    alternates: {
+      canonical: `${siteConfig.url}/productos/${product.slug}`,
+    },
     openGraph: {
       title: `${product.name} | ${siteConfig.name}`,
       description: product.shortDescription,
@@ -42,14 +51,18 @@ export async function generateMetadata({
       siteName: siteConfig.name,
       locale: siteConfig.seo.locale,
       type: "website",
-      images: primaryImage
-        ? [
-            {
-              url: primaryImage.src,
-              alt: primaryImage.alt,
-            },
-          ]
-        : [],
+      images: [
+        {
+          url: ogImageUrl,
+          alt: primaryImage ? primaryImage.alt : `${product.name} | ${siteConfig.name}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} | ${siteConfig.name}`,
+      description: product.shortDescription,
+      images: [ogImageUrl],
     },
   };
 }
@@ -123,9 +136,9 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           <ProductGallery images={product.images} productName={product.name} />
         </div>
 
-        {/* Columna Derecha: Ficha y Jerarquía Tipográfica */}
-        <div className="lg:col-span-5 flex flex-col space-y-6 sm:space-y-8 lg:sticky lg:top-28">
-          {/* Encabezado del Mueble (order-1 en mobile y desktop) */}
+        {/* Columna Derecha: Ficha y Jerarquía Tipográfica (flujo normal sin sticky) */}
+        <div className="lg:col-span-5 flex flex-col space-y-6 sm:space-y-8">
+          {/* Encabezado del Mueble y Formas de Pago (order-1 en mobile y desktop) */}
           <div className="order-1 space-y-2.5 sm:space-y-3 border-b border-[#E8E5DF] pb-5 sm:pb-6">
             <span className="text-[10px] uppercase tracking-[0.28em] text-[#7E7A73] font-medium block">
               {product.category}
@@ -133,16 +146,10 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-serif text-[#141413] tracking-tight font-normal leading-[1.12]">
               {product.name}
             </h1>
-            <div className="flex items-baseline space-x-4 pt-1">
-              <span className="text-xl sm:text-2xl font-serif text-[#141413]">
-                {formatPrice(product.price)}
-              </span>
-              {product.compareAtPrice && (
-                <span className="text-sm text-[#A8A49D] line-through font-light">
-                  {formatPrice(product.compareAtPrice)}
-                </span>
-              )}
-            </div>
+            <ProductPricing
+              price={product.price}
+              compareAtPrice={product.compareAtPrice}
+            />
           </div>
 
           {/* CTA Principal: en mobile aparece inmediatamente después del precio (order-2), en desktop al final (order-4) */}

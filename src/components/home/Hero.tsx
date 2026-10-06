@@ -2,18 +2,24 @@ import Link from "next/link";
 import Image from "next/image";
 import { siteConfig } from "@/config/site";
 
+const HERO_IMAGE = {
+  src: "/images/editorial/hero.jpg",
+  alt: "Atmósfera arquitectónica cálida con mobiliario en maderas nobles",
+  objectPosition: "object-center",
+} as const;
+
 export function Hero() {
   return (
     <section className="relative min-h-[100dvh] md:min-h-screen flex items-end pb-12 sm:pb-16 md:pb-24 pt-24 sm:pt-32 overflow-hidden bg-[#EFECE6]">
       {/* Fondo fotográfico arquitectónico */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/products/espejo-rectangular-petiribi-01.jpg"
-          alt="Atmósfera de espacio contemporáneo con mobiliario de diseño"
+          src={HERO_IMAGE.src}
+          alt={HERO_IMAGE.alt}
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center brightness-95 opacity-80"
+          className={`object-cover ${HERO_IMAGE.objectPosition} brightness-95 opacity-80`}
         />
         {/* Degradado sutil para legibilidad editorial */}
         <div className="absolute inset-0 bg-linear-to-t from-[#141413]/85 via-[#141413]/40 to-[#141413]/10" />
@@ -46,10 +52,10 @@ export function Hero() {
             </Link>
 
             <Link
-              href="/#filosofia"
+              href="/taller"
               className="inline-flex items-center justify-center space-x-2 text-xs uppercase tracking-[0.18em] text-[#FBFBFA] hover:text-[#E8E5DF] transition-colors border-b border-[#FBFBFA]/60 pb-1 py-2 sm:py-0 text-center"
             >
-              <span>Nuestra Filosofía de Taller</span>
+              <span>Filosofía de Taller</span>
             </Link>
           </div>
         </div>

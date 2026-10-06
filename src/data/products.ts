@@ -14,7 +14,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: "espejo-rectangular-petiribi",
     name: "Espejo Rectangular Petiribí",
     category: "espejos",
-    price: 690000,
+    price: 600000,
     shortDescription:
       "Espejo de gran formato de 2,00 m × 0,80 m con marco de madera Petiribí de 12 cm.",
     description:
@@ -61,28 +61,12 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: "espejo-marco-curvo-roble",
     name: "Espejo Marco Curvo Roble",
     category: "espejos",
-    price: 740000,
+    price: 500000,
     shortDescription:
       "Espejo de gran formato de 2,00 m × 0,80 m con marco curvo de 6 cm en madera de roble.",
     description:
       "Espejo de gran formato con marco curvo realizado en madera de roble. Su diseño orgánico y las vetas naturales de la madera aportan carácter y calidez al ambiente.",
-    images: [
-      {
-        src: "/images/products/espejo-marco-curvo-roble-01.jpg",
-        alt: "Espejo Marco Curvo Roble 2,00 x 0,80 m vista frontal",
-        isMain: true,
-      },
-      {
-        src: "/images/products/espejo-marco-curvo-roble-02.jpg",
-        alt: "Detalle de curvatura orgánica del marco en roble",
-        isMain: false,
-      },
-      {
-        src: "/images/products/espejo-marco-curvo-roble-03.jpg",
-        alt: "Espejo Marco Curvo Roble en ambiente",
-        isMain: false,
-      },
-    ],
+    images: [],
     dimensions: {
       width: 80,
       height: 200,
@@ -103,28 +87,12 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: "espejo-redondo-petiribi",
     name: "Espejo Redondo Petiribí",
     category: "espejos",
-    price: 340000,
+    price: 250000,
     shortDescription:
       "Espejo circular de 0,80 m de diámetro enmarcado en madera Petiribí.",
     description:
       "Espejo circular enmarcado en madera Petiribí. Un diseño simple, cálido y atemporal que funciona muy bien en recibidores, dormitorios, baños o livings.",
-    images: [
-      {
-        src: "/images/products/espejo-redondo-petiribi-01.jpg",
-        alt: "Espejo Redondo Petiribí 0,80 m vista frontal",
-        isMain: true,
-      },
-      {
-        src: "/images/products/espejo-redondo-petiribi-02.jpg",
-        alt: "Detalle del marco circular en madera Petiribí",
-        isMain: false,
-      },
-      {
-        src: "/images/products/espejo-redondo-petiribi-03.jpg",
-        alt: "Espejo Redondo Petiribí sobre recibidor",
-        isMain: false,
-      },
-    ],
+    images: [],
     dimensions: {
       diameter: 80,
       formatted: "0,80 m de diámetro",
@@ -143,25 +111,25 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: "mesa-apoyo-petiribi-marmol",
     name: "Mesa de Apoyo Petiribí y Mármol",
     category: "mesas",
-    price: 350000,
+    price: 300000,
     shortDescription:
       "Mesa de apoyo compacta de 0,60 m de diámetro que combina madera Petiribí con mármol.",
     description:
       "Mesa de apoyo compacta que combina madera Petiribí con mármol. Su escala versátil permite utilizarla como mesa de luz, mesa lateral o como parte de una composición de dos mesas auxiliares en el living.",
     images: [
       {
-        src: "/images/products/mesa-apoyo-petiribi-marmol-01.jpg",
+        src: "/images/products/mesa-apoyo-petiribi-marmol-01.jpeg",
         alt: "Mesa de Apoyo Petiribí y Mármol vista general",
         isMain: true,
       },
       {
-        src: "/images/products/mesa-apoyo-petiribi-marmol-02.jpg",
-        alt: "Detalle de tapa de mármol y base de madera Petiribí",
+        src: "/images/products/mesa-apoyo-petiribi-marmol-02.jpeg",
+        alt: "Mesa de Apoyo Petiribí y Mármol vista frontal y estructura",
         isMain: false,
       },
       {
-        src: "/images/products/mesa-apoyo-petiribi-marmol-03.jpg",
-        alt: "Mesa de Apoyo Petiribí y Mármol en living",
+        src: "/images/products/mesa-apoyo-petiribi-marmol-03.jpeg",
+        alt: "Detalle de textura de superficie de mármol",
         isMain: false,
       },
     ],
@@ -188,23 +156,7 @@ export const MOCK_PRODUCTS: Product[] = [
       "Mesa de apoyo de mayor formato realizada en madera y mármol para living.",
     description:
       "Mesa de apoyo de mayor formato realizada en madera y mármol, pensada para ocupar un lugar protagonista en el living. Una pieza funcional que combina la calidez de la madera con la presencia del mármol.",
-    images: [
-      {
-        src: "/images/products/mesa-apoyo-grande-marmol-01.jpg",
-        alt: "Mesa de Apoyo Grande con Mármol vista general",
-        isMain: true,
-      },
-      {
-        src: "/images/products/mesa-apoyo-grande-marmol-02.jpg",
-        alt: "Detalle de la superficie de mármol y cuerpo de madera",
-        isMain: false,
-      },
-      {
-        src: "/images/products/mesa-apoyo-grande-marmol-03.jpg",
-        alt: "Mesa de Apoyo Grande con Mármol ambientada",
-        isMain: false,
-      },
-    ],
+    images: [],
     material: "Madera y mármol",
     features: [
       "Formato de mayor presencia y escala pensado para living",
@@ -216,34 +168,75 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: "prod-015",
-    slug: "banqueta-pie-de-cama",
-    name: "Banqueta Pie de Cama",
+    slug: "banqueta-tipa-colorada",
+    name: "Banqueta Tipa Colorada",
     category: "banquetas",
-    price: 450000,
+    price: 500000,
     shortDescription:
-      "Banqueta de diseño pensada para acompañar dormitorio, vestidor o recibidor.",
+      "Banqueta de diseño realizada en madera de tipa colorada.",
     description:
-      "Banqueta de diseño pensada para acompañar el dormitorio, un vestidor o un recibidor. Una pieza funcional que suma presencia y comodidad al ambiente.",
+      "Banqueta de diseño realizada en madera de tipa colorada. Una pieza artesanal concebida para acompañar el pie de cama, un vestidor o un recibidor con calidez y presencia natural.",
     images: [
       {
-        src: "/images/products/banqueta-pie-de-cama-01.jpg",
-        alt: "Banqueta Pie de Cama vista general",
+        src: "/images/products/banqueta-tipa-colorada-01.jpeg",
+        alt: "Banqueta Tipa Colorada vista general",
         isMain: true,
       },
       {
-        src: "/images/products/banqueta-pie-de-cama-02.jpg",
-        alt: "Detalle de estructura y terminación de la banqueta",
+        src: "/images/products/banqueta-tipa-colorada-02.jpeg",
+        alt: "Banqueta Tipa Colorada vista frontal",
         isMain: false,
       },
       {
-        src: "/images/products/banqueta-pie-de-cama-03.jpg",
-        alt: "Banqueta Pie de Cama en dormitorio",
+        src: "/images/products/banqueta-tipa-colorada-03.jpeg",
+        alt: "Banqueta Tipa Colorada vista de perfil",
         isMain: false,
       },
     ],
+    material: "Tipa colorada",
     features: [
       "Diseño estilizado para pie de cama, vestidor o recibidor",
-      "Aporte de asiento auxiliar, apoyo y calidez al espacio",
+      "Asiento y estructura realizados en madera maciza de tipa colorada",
+    ],
+    featured: false,
+    available: true,
+  },
+  {
+    id: "prod-018",
+    slug: "banqueta-petiribi",
+    name: "Banqueta Petiribí",
+    category: "banquetas",
+    price: 500000,
+    shortDescription:
+      "Banqueta de diseño realizada en madera de Petiribí con detalle de veta.",
+    description:
+      "Banqueta de diseño realizada en madera maciza de Petiribí con detalle longitudinal de veta en el asiento. Una pieza concebida para sumar calidez y funcionalidad en dormitorios, vestidores o recibidores.",
+    images: [
+      {
+        src: "/images/products/banqueta-petiribi-01.jpeg",
+        alt: "Banqueta Petiribí vista general en perspectiva",
+        isMain: true,
+      },
+      {
+        src: "/images/products/banqueta-petiribi-02.jpeg",
+        alt: "Banqueta Petiribí vista frontal",
+        isMain: false,
+      },
+      {
+        src: "/images/products/banqueta-petiribi-03.jpeg",
+        alt: "Banqueta Petiribí vista de perfil",
+        isMain: false,
+      },
+      {
+        src: "/images/products/banqueta-petiribi-04.jpeg",
+        alt: "Detalle de veta y acabado superior en Petiribí",
+        isMain: false,
+      },
+    ],
+    material: "Petiribí",
+    features: [
+      "Diseño estilizado para pie de cama, vestidor o recibidor",
+      "Asiento con detalle longitudinal y estructura en Petiribí",
     ],
     featured: false,
     available: true,
@@ -253,25 +246,30 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: "recibidor-cedro",
     name: "Recibidor Cedro",
     category: "recibidores",
-    price: 490000,
+    price: 500000,
     shortDescription:
       "Recibidor realizado en madera de cedro para espacios de entrada.",
     description:
       "Recibidor realizado en madera de cedro, pensado para acompañar espacios de entrada con la calidez y las vetas naturales propias de la madera.",
     images: [
       {
-        src: "/images/products/recibidor-cedro-01.jpg",
+        src: "/images/products/recibidor-cedro-01.jpeg",
         alt: "Recibidor Cedro vista frontal",
         isMain: true,
       },
       {
-        src: "/images/products/recibidor-cedro-02.jpg",
-        alt: "Detalle de vetas y textura de madera de cedro",
+        src: "/images/products/recibidor-cedro-02.jpeg",
+        alt: "Recibidor Cedro en perspectiva",
         isMain: false,
       },
       {
-        src: "/images/products/recibidor-cedro-03.jpg",
-        alt: "Recibidor Cedro en espacio de entrada",
+        src: "/images/products/recibidor-cedro-03.jpeg",
+        alt: "Detalle de ensamble y perfil del recibidor",
+        isMain: false,
+      },
+      {
+        src: "/images/products/recibidor-cedro-04.jpeg",
+        alt: "Detalle de textura y veta natural en madera de cedro",
         isMain: false,
       },
     ],
@@ -283,6 +281,37 @@ export const MOCK_PRODUCTS: Product[] = [
     featured: false,
     available: true,
   },
+  {
+    id: "prod-017",
+    slug: "mesa-de-luz-petiribi",
+    name: "Mesa de Luz Petiribí",
+    category: "mesas",
+    price: 250000,
+    shortDescription:
+      "Mesa de luz realizada en madera de Petiribí.",
+    description:
+      "Mesa de luz realizada en madera de Petiribí. Una pieza concebida para dormitorios y espacios de descanso con la calidez y las vetas naturales de la madera.",
+    images: [
+      {
+        src: "/images/products/mesa-de-luz-petiribi-01.jpeg",
+        alt: "Mesa de Luz Petiribí vista frontal",
+        isMain: true,
+      },
+      {
+        src: "/images/products/mesa-de-luz-petiribi-02.jpeg",
+        alt: "Mesa de Luz Petiribí vista en ángulo superior",
+        isMain: false,
+      },
+      {
+        src: "/images/products/mesa-de-luz-petiribi-03.jpeg",
+        alt: "Detalle de estructura y estante inferior en Petiribí",
+        isMain: false,
+      },
+    ],
+    material: "Petiribí",
+    featured: false,
+    available: true,
+  },
 ];
 
 // ============================================================================
@@ -290,32 +319,22 @@ export const MOCK_PRODUCTS: Product[] = [
 // ============================================================================
 
 /**
- * Resuelve la ruta física de la imagen del producto.
- * Si la imagen configurada existe físicamente en disco (ej. /images/products/<slug>-01.jpg),
- * se retorna directamente dicha ruta. Si todavía no fue subida, devuelve "/products/placeholder.svg"
- * como fallback seguro para evitar 404s e imágenes rotas en el navegador.
+ * Procesa el producto asegurando que solo se incluyan imágenes que realmente
+ * existan en el sistema de archivos (/public). Si una fotografía no existe o
+ * el producto aún no tiene fotografías, se preserva `images: []` para que
+ * la interfaz active el estado editorial PRÓXIMAMENTE sin imágenes rotas ni placeholders falsos.
  */
-function resolveImageSrc(src: string): string {
-  if (!src) return "/products/placeholder.svg";
-
-  const cleanPath = src.startsWith("/") ? src.slice(1) : src;
-  const filePath = path.join(process.cwd(), "public", cleanPath);
-
-  if (fs.existsSync(filePath)) {
-    return src;
-  }
-
-  // Fallback seguro al placeholder existente cuando la fotografía aún no fue subida
-  return "/products/placeholder.svg";
-}
-
 function processProduct(product: Product): Product {
+  const validImages = product.images.filter((img) => {
+    if (!img.src) return false;
+    const cleanPath = img.src.startsWith("/") ? img.src.slice(1) : img.src;
+    const filePath = path.join(process.cwd(), "public", cleanPath);
+    return fs.existsSync(filePath);
+  });
+
   return {
     ...product,
-    images: product.images.map((img) => ({
-      ...img,
-      src: resolveImageSrc(img.src),
-    })),
+    images: validImages,
   };
 }
 
